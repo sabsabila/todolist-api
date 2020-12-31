@@ -60,7 +60,6 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] =  $user->createToken('nApp')->accessToken;
 
         return response()->json(['message'=>"Registered Successfully !"], $this->successStatus);
     }
