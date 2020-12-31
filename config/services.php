@@ -15,8 +15,8 @@ return [
     */
 
     'google' => [
-        'client_id' => env('157398460006-0491v20014fqi8m4u5e601mmjrja7old.apps.googleusercontent.com'),
-        'client_secret' => env('WCRoWlLDl3JIUX09GA0YSSE4'),
+        'client_id' => env('808673283454-6ja9jnapj34sikb8jauud8qntqupa70f.apps.googleusercontent.com'),
+        'client_secret' => env('rsx8q-_MNag49HpoND4ZUl1I'),
         'redirect' => 'http://localhost:8000',
     ],
 

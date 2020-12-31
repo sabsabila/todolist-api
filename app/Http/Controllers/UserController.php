@@ -14,6 +14,26 @@ class UserController extends Controller
 
     public $successStatus = 200;
 
+    public function googleSignin(Request $request){
+        $name = $request->name;
+        $email = $request->email;
+        
+        if (User::where('email', $email)->exists()) {
+            $user = User::where('email', $email)->first();
+            Auth::login($user);
+            $success['token'] =  $user->createToken('nApp')->accessToken;
+            return response()->json(['token' => $success['token']], $this->successStatus);
+            
+        }else{
+            $user = new User;
+            $user->name = $name;
+            $user->email = $email;
+            $user->save();
+            $success['token'] =  $user->createToken('nApp')->accessToken;    
+            return response()->json(['token' => $success['token']], $this->successStatus);
+        }
+    }
+
     public function login(){
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
             $user = Auth::user();
