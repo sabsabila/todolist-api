@@ -16,6 +16,8 @@ class TaskController extends Controller
         $task->user_id = Auth::user()->user_id;
         $task->title = $request->title;
         $task->description = $request->description;
+        if(!strcmp($request->dueDate, "null") == 0)
+            $task->due_date = $request->dueDate;
 
         if($task->save()){
             return response()->json([ 'message' => "Data Successfully Added"]);
@@ -50,6 +52,8 @@ class TaskController extends Controller
 
         $task->title = $request->title;
         $task->description = $request->description;
+        if(!strcmp($request->dueDate, "null") == 0)
+            $task->due_date = $request->dueDate;
 
         if($task->save()){
             return response()->json([ 'message' => "Data Successfully Updated"]);

@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->integer('user_id')->index('USER_ID_FK');
             $table->string('title');
             $table->string('description');
+            $table->date('due_date')->nullable();
             $table->tinyInteger('checked')->default(0);
             $table->timestamps();
         });
