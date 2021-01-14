@@ -60,6 +60,19 @@ class TaskController extends Controller
         }
     }
 
+    public function setTime(Request $request, $id)
+    {
+        $task = Task::where('task_id', $id)
+        ->where('user_id', Auth::User()->user_id)
+        ->first();
+
+        $task->alarm_time = $request->alarmTime;
+
+        if($task->save()){
+            return response()->json([ 'message' => "Data Successfully Updated"]);
+        }
+    }
+
     public function check(Request $request, $id)
     {
         $task = Task::where('task_id', $id)
