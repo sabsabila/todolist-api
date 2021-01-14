@@ -22,10 +22,9 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('user', 'UserController@details');
     Route::post('logout', 'UserController@logout');
 
-    Route::get('task/check/{id}', 'TaskController@index');
+    Route::get('task/check/{check}', 'TaskController@index');
     Route::get('task/{id}', 'TaskController@show');
     Route::post('task', 'TaskController@store');
-    Route::put('task/{id}', 'TaskController@update');
     Route::put('task/{id}', 'TaskController@update');
     Route::put('task/check/{check}', 'TaskController@checkN');
     Route::delete('task/{id}', 'TaskController@destroy');
